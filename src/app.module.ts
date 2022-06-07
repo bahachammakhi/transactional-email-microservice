@@ -12,9 +12,12 @@ import { MailjetModule } from './mailjet/mailjet.module';
     ConfigModule.forRoot(),
     BullModule.forRoot({
       redis: {
-        host: 'localhost',
+        host: 'redis',
         port: 6379,
       },
+    }),
+    BullModule.registerQueue({
+      name: 'mailer',
     }),
     MailerModule,
     SendgridModule,
